@@ -23,17 +23,19 @@ const Login = () => {
   let dataFromContext = React.useContext(AuthContext);
   const { login, isAuth, token } = dataFromContext;
 
-  function handleChange(e) {
-    const { value, name } = e.target;
+  let handleChange = (e) => {
+    let { value, name } = e.target;
 
-    setData((old) => ({
-      ...old,
-      [name]: value,
-    }));
-  }
+    setData((oldData) => {
+      return {
+        ...oldData,
+        [name]: value,
+      };
+    });
+  };
 
-  function getResponse() {
-    fetch(`https://reqres.in/api/login`, {
+  function GetResponse() {
+    fetch(`https://masai-api-mocker.herokuapp.com/auth/login`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -41,30 +43,48 @@ const Login = () => {
       },
     })
       .then((res) => res.json())
-      .then((res) => login(res.token));
+      .then((res) => {
+        console.log(res.message);
+      });
   }
+
+  // function getResponse() {
+  //   fetch(`https://reqres.in/api/login`, {
+  //     method: "POST",
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => login(res.token));
+  // }
 
   //   console.log(dataFromContext);
 
   return (
     <LoginWrapper>
-      <Input
-        type="email"
-        name="email"
-        value={data.email}
-        placeholder="Email"
+      <input
+        name="username"
+        type="text"
+        value={data.username}
+        placeholder="UserName"
         onChange={handleChange}
       />
+
       <br />
-      <Input
-        type="password"
+      <br />
+
+      <input
         name="password"
+        type="password"
         value={data.password}
         placeholder="Password"
         onChange={handleChange}
       />
       <br />
-      <Button onClick={getResponse}>Sign In</Button>
+      <br />
+      <Button onClick={GetResponse}>Sign In</Button>
     </LoginWrapper>
   );
 };

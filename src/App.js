@@ -1,8 +1,12 @@
 import "./App.css";
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Homepage from "./Components/Homepage";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
+import Register from "./Components/Register";
+import Product from "./Components/Product";
+import ProductDetails from "./Components/ProductDetails";
 import { AuthContext } from "./Contexts/AuthContext";
 
 function App() {
@@ -11,13 +15,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {isAuth && <Homepage />}
-      {!isAuth && <Login />}
-      {/* {isAuth && (
-        <h1>
-          Login Sucessfull <br /> Token : ${token}
-        </h1>
-      )} */}
+      <Routes>
+        {!isAuth && <Route path="/" element={<Homepage />} />}
+        {!isAuth && <Route path="/product" element={<Product />} />}
+        {!isAuth && <Route path="/products/:id" element={<ProductDetails />} />}
+        {!isAuth && <Route path="/register" element={<Register />} />}
+        {!isAuth && <Route path="/login" element={<Login />} />}
+      </Routes>
     </div>
   );
 }

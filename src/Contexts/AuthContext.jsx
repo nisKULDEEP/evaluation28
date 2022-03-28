@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 export let AuthContext = React.createContext();
 
 export function AuthContextProvider({ children }) {
   let [isAuth, setIsAuth] = React.useState(false);
-  let [token, setToken] = React.useState("");
+  let [userDetail, setUserDetail] = React.useState("");
+  const [token, setToken] = React.useState("");
   //   console.log("SDFH");
   var login = (val) => {
     setIsAuth(true);
-    setToken(val);
+    setUserDetail(val);
   };
 
   var logOut = () => {
@@ -16,7 +17,9 @@ export function AuthContextProvider({ children }) {
     setToken("");
   };
   return (
-    <AuthContext.Provider value={{ login, token, isAuth, logOut }}>
+    <AuthContext.Provider
+      value={{ login, setToken, setUserDetail, isAuth, logOut }}
+    >
       {children}
     </AuthContext.Provider>
   );

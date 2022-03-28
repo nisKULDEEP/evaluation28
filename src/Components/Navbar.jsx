@@ -1,32 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import { Link } from "react-router-dom";
+
 import { AuthContext } from "../Contexts/AuthContext";
+// import Homepage from "./Components/Homepage";
+// import Login from "./Components/Login";
+// import Register from "./Components/Register";
+// import Product from "./Components/Product";
+// import ProductDetails from "./Components/ProductDetails";
 
 let Head = styled.div`
   color: blue;
 `;
 let AuthWrapper = styled.div`
-display: flex
-flex-direction: row;
-justify-content: flex-end;
-
+  display: flex
+  flex-direction: row;
+  justify-content: flex-end;
 `;
-// let Button = styled.button`
-//   padding: 5px;
-//   color: #ffffff;
-//   background-color: black;
-//   font-weight: 400;
-//   border-radius: 5px;
-//   margin-left: 10px;
 
-//   &:hover {
-//     color: black;
-//     background-color: #ffffff;
-//     border: 1px solid black;
-//     cursor: pointer;
-//   }
-// `;
+let Temp = styled.span`
+  margin-left: 10px;
+`;
 
 let Nav = styled.nav`
   display: flex;
@@ -41,10 +35,26 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <Head>Context API</Head>
+        <Head>Store</Head>
         <AuthWrapper>
-          {!isAuth && <Button>Log In</Button>}
-          {isAuth && <Button onClick={logOut}>Log Out</Button>}
+          <Temp>
+            {" "}
+            <Link to="/">HOME</Link>{" "}
+          </Temp>
+          <Temp>
+            <Link to="/login">LOGIN</Link>{" "}
+          </Temp>
+          <Temp>
+            <Link to="/register">REGISTER</Link>{" "}
+          </Temp>
+          <Temp>
+            <Link to="/product">PRODUCT</Link>{" "}
+          </Temp>
+          <Temp>
+            <Link to="/">HOME</Link>{" "}
+          </Temp>
+          {/* <Button>Log In</Button>
+          <Button onClick={logOut}>Log Out</Button> */}
         </AuthWrapper>
       </Nav>
       <hr />
