@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "./Button";
+
+// const redirect = useNavigate();
+
 const Product = () => {
   let Div = styled.div`
     margin-top: 50px;
@@ -10,6 +15,7 @@ const Product = () => {
     margin-left: 35%;
     padding: 50px;
     height: 150px;
+    text-decoration: none;
   `;
   let P = styled.p`
     font-size: 25px;
@@ -31,14 +37,17 @@ const Product = () => {
   var displayData = (arr) => {
     showData = arr.map((old) => {
       return (
-        <Div key={old.id}>
-          <div>Product Id: {old.id}</div>
-          <br />
-          <div>Name: {old.title}</div> <br />
-          <div>brand: {old.brand}</div> <br />
-          <div>type: {old.type}</div>
-          <br />
-        </Div>
+        <Link to={`/products/${old.id}`}>
+          {/* console.log({old.id}) */}
+          <Div key={old.id}>
+            <div>Product Id: {old.id}</div>
+            <br />
+            <div>Name: {old.title}</div> <br />
+            <div>brand: {old.brand}</div> <br />
+            <div>type: {old.type}</div>
+            <br />
+          </Div>
+        </Link>
       );
     });
   };
@@ -46,6 +55,16 @@ const Product = () => {
   return (
     <>
       <P>Select a product and happy Shopping</P>
+
+      <span>
+        <p>Sorting</p>
+        <div>
+          <span>Price</span>
+          <Button secondary>Increasing Order</Button>
+          <Button secondary>Decreasing Order</Button>
+        </div>
+      </span>
+
       <div>{showData}</div>
     </>
   );

@@ -49,7 +49,7 @@ const Register = () => {
     return (
       <>
         <h2>{registerStatus}</h2>
-        <Button onClick={() => setRegisterStatus(false)}>
+        <Button secondary onClick={() => setRegisterStatus(false)}>
           {" "}
           Register Again
         </Button>

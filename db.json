@@ -1,14 +1,14 @@
 {
     "products":[
-      { "id": 1, "title": "Laptop", "brand": "samsung" , "type":"electronics"},
-      { "id": 2, "title": "Phone", "brand": "Apple","type":"electronics" },
-      { "id": 3, "title": "Mac Book Air", "brand": "Apple","type":"electronics" },
-      { "id": 4, "title": "PC", "brand": "HP","type":"electronics" },
-      { "id": 5, "title": "Jeans", "brand": "Levis","type":"clothing" },
-      { "id": 6, "title": "Shirt", "brand": "Raymond","type":"clothing"},
-      { "id": 7, "title": "Snikers", "brand": "Nike","type":"clothing"},
-      { "id": 8, "title": "Shades", "brand": "Rayban","type":"clothing" },
-      { "id": 9, "title":"Rice","brand":"","type":"food"},
-        { "id": 10, "title":"pencil","brand":"","type":"stationary"}
+      { "id": 1, "title": "Laptop", "brand": "samsung" , "type":"electronics", "price":3200},
+      { "id": 2, "title": "Phone", "brand": "Apple","type":"electronics" , "price":3002},
+      { "id": 3, "title": "Mac Book Air", "brand": "Apple","type":"electronics", "price":32500 },
+      { "id": 4, "title": "PC", "brand": "HP","type":"electronics" , "price":3033},
+      { "id": 5, "title": "Jeans", "brand": "Levis","type":"clothing", "price":330 },
+      { "id": 6, "title": "Shirt", "brand": "Raymond","type":"clothing", "price":800},
+      { "id": 7, "title": "Snikers", "brand": "Nike","type":"clothing", "price":360},
+      { "id": 8, "title": "Shades", "brand": "Rayban","type":"clothing" , "price":200},
+      { "id": 9, "title":"Rice","brand":"","type":"food", "price":320},
+        { "id": 10, "title":"pencil","brand":"","type":"stationary", "price":3200}
     ]
   }

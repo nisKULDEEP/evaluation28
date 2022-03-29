@@ -16,11 +16,12 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        {!isAuth && <Route path="/" element={<Homepage />} />}
-        {!isAuth && <Route path="/product" element={<Product />} />}
-        {!isAuth && <Route path="/products/:id" element={<ProductDetails />} />}
         {!isAuth && <Route path="/register" element={<Register />} />}
         {!isAuth && <Route path="/login" element={<Login />} />}
+
+        {isAuth && <Route path="/" element={<Homepage />} />}
+        {isAuth && <Route path="/products" element={<Product />} />}
+        {isAuth && <Route path="/products/:id" element={<ProductDetails />} />}
       </Routes>
     </div>
   );

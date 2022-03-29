@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Homepage from "../Components/Homepage";
 
 export let AuthContext = React.createContext();
 
 export function AuthContextProvider({ children }) {
   let [isAuth, setIsAuth] = React.useState(false);
-  let [userDetail, setUserDetail] = React.useState("");
+  let [userName, setUserName] = React.useState("");
   const [token, setToken] = React.useState("");
   //   console.log("SDFH");
-  var login = (val) => {
+
+  var Login = (val) => {
     setIsAuth(true);
-    setUserDetail(val);
+    console.log("jsdhf");
+    setToken(val);
+
+    // <Navigate to="/" />;
+    // const Re = useNavigate();
+    // Re("/products");
   };
 
   var logOut = () => {
@@ -18,7 +26,7 @@ export function AuthContextProvider({ children }) {
   };
   return (
     <AuthContext.Provider
-      value={{ login, setToken, setUserDetail, isAuth, logOut }}
+      value={{ Login, setToken, setUserName, userName, isAuth, logOut, token }}
     >
       {children}
     </AuthContext.Provider>

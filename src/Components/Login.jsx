@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import { AuthContext } from "../Contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   let LoginWrapper = styled.div`
@@ -16,12 +17,13 @@ const Login = () => {
   `;
 
   const [data, setData] = React.useState({
-    email: "",
+    username: "",
     password: "",
   });
 
   let dataFromContext = React.useContext(AuthContext);
-  const { login, isAuth, token } = dataFromContext;
+  // console.log(dataFromContext.Login);
+  const { Login, setUserName } = dataFromContext;
 
   let handleChange = (e) => {
     let { value, name } = e.target;
@@ -33,7 +35,7 @@ const Login = () => {
       };
     });
   };
-
+  const redirect = useNavigate();
   function GetResponse() {
     fetch(`https://masai-api-mocker.herokuapp.com/auth/login`, {
       method: "POST",
@@ -44,7 +46,9 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.message);
+        !res.error ? Login(res.token) : alert("something is wrong");
+        !res.error && setUserName(data.username);
+        !res.error && redirect("/");
       });
   }
 
@@ -84,7 +88,9 @@ const Login = () => {
       />
       <br />
       <br />
-      <Button onClick={GetResponse}>Sign In</Button>
+      <Button secondary onClick={GetResponse}>
+        Sign In
+      </Button>
     </LoginWrapper>
   );
 };
